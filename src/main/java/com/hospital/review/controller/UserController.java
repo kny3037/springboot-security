@@ -1,6 +1,9 @@
 package com.hospital.review.controller;
 
 import com.hospital.review.domain.*;
+import com.hospital.review.domain.dto.UserDto;
+import com.hospital.review.domain.dto.UserJoinRequest;
+import com.hospital.review.domain.dto.UserJoinResponse;
 import com.hospital.review.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
