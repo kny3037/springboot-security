@@ -4,6 +4,8 @@ import com.hospital.review.Repository.UserRepository;
 import com.hospital.review.domain.User;
 import com.hospital.review.domain.dto.UserDto;
 import com.hospital.review.domain.dto.UserJoinRequest;
+import com.hospital.review.exception.ErrorCode;
+import com.hospital.review.exception.HospitalReviewAppException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +22,7 @@ public class UserService {
         //있으면 에러처리
         userRepository.findByUserName(request.getUserName())
                 .ifPresent(user -> {
-                    throw new RuntimeException("해당 userName이 중복 됩니다.");
+                    throw new HospitalReviewAppException(ErrorCode.DUPLICATED_USER_NAME, String.format("UserName : %s", request.getUserName()));
                 });
 
         //회원가입 .save()
